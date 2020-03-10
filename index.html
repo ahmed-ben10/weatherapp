@@ -10,27 +10,22 @@
     <title>Weather</title>
 </head>
 <body class="body">
-    <main class="container">
-
-        <form method="post" class="search">
-            <input type="search" name="search" class="search__input">
-            <button type="submit" class="search__button">Zoek</button>
-        </form>
-        <div class="local-weather">
-            <div class="local-weather__header"></div>
-            <p class="local-weather__temp"></p>
-            <p class="local-weather__temp--estimated"></p>
-        </div>
-        <section class="weather">
+    <main class="main">
+        <section class="container">
+            <form method="post" class="search">
+                <input type="search" name="search" class="search__input">
+                <button type="submit" class="search__button"><i class="fa fa-search"></i></button>
+            </form>
             <div class="local-weather">
-                <h2 class="weather__heading"></h2>
-                <p class="weather__temp"></p>
-                <p class="weather__temp-min"></p>
-                <p class="weather__temp-max"></p>
+                <div class="local-weather__header"></div>
+                <p class="local-weather__temp"></p>
+                <p class="local-weather__temp--estimated"></p>
             </div>
         </section>
+        <section class="weather"></section>
     </main>
-<script src="js/Weather.js"></script>
-<script src="js/main.js"></script>
+    <script src="https://use.fontawesome.com/5ea4205658.js"></script>
+    <script src="js/Weather.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -31,11 +31,17 @@ class Main {
         for (let i = 0; i < this.searchedWeatherList.length; i++) {
             if (this.searchedWeatherList[i] == null) continue;
             let weatherBlock = `
-                <div class="local-weather">
-                    <h2 class="weather__heading">${this.searchedWeatherList[i].name}</h2>
+                <div class="searched-weather">
+                    <div class="weather__header">
+                        <h2 class="weather__heading">${this.searchedWeatherList[i].name}</h2>
+                        <img src=\"http://openweathermap.org/img/wn/${this.searchedWeatherList[i].weather[0].icon}@2x.png\" alt=\"\"> 
+                        <p>${this.searchedWeatherList[i].weather[0].description}</p>
+                    </div>
                     <p class="weather__temp">${this.searchedWeatherList[i].main.temp.toFixed(0)}&#8451;</p>
-                    <p class="weather__temp-min">${this.searchedWeatherList[i].main.temp_min.toFixed(0)}&#8451;</p>
-                    <p class="weather__temp-max">${this.searchedWeatherList[i].main.temp_max.toFixed(0)}&#8451;</p>
+                    <p class="local-weather__temp--estimated">
+                        ${this.searchedWeatherList[i].main.temp_min.toFixed(0)}&#8451; 
+                        - ${this.searchedWeatherList[i].main.temp_max.toFixed(0)}&#8451;
+                    </p>
                     <button class="weather__delete" onclick="a.removeWeather(${this.searchedWeatherList[i].id});">DEL</button>
                 </div>
             `;
