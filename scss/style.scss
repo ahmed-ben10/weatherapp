@@ -1,3 +1,49 @@
 .body{
   margin: 0;
+  background-image: url("../img/background.jpg");
+  background-size: initial;
+  background-repeat: no-repeat;
+  font-family: 'Raleway', sans-serif;
+}
+
+.container{
+  border-radius: 2px;
+  margin-top: 11%;
+  width: 60%;
+  margin-left: 18%;
+  padding: 2%;
+  background-color: #ffffff6e;
+}
+
+.search{
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  margin-bottom: 2%;
+  &__input{
+    padding: 2%;
+  }
+}
+
+.local-weather{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2%;
+  &__header {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+  &__heading {
+    margin: 0;
+    font-size: 4rem;
+  }
+  &__temp{
+    grid-column: 1/2;
+    font-size: 3rem;
+    &--estimated{
+      font-size: 1.5rem;
+      margin-top: 29%;
+      text-align: center;
+    }
+  }
 }

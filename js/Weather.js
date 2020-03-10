@@ -1,40 +1,30 @@
 class Weather {
 
-    constructor(){
+    constructor() {
         this.city = null;
         this.searchedWeather = null;
+        this.localWeather = null;
     }
 
-     async getLocalWeather(){
-        let localWeather = null;
-        await navigator.geolocation.getCurrentPosition(  async function ( position) {
-            await fetch("http://api.openweathermap.org/data/2.5/find?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&cnt=1&APPID=108066b3aff84a56374aeb9d77b4b56f").then((response) => {
-                    return response.json();
-                }).then((data) => {
-                    localWeather = data;
-                })
-            },
-            function (error) {
-                alert("The Locator was denied")
-            });
-        this.localWeather = localWeather;
-        console.log(this.localWeather);
-        return localWeather;
+    async getLocalWeather() {
+        const position = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+        const baseUrl = "http://api.openweathermap.org/data/2.5/find";
+        const url = `${baseUrl}?lat=${position.coords.latitude}&lon=${
+            position.coords.longitude
+        }&units=metric&cnt=1&lang=nl&APPID=108066b3aff84a56374aeb9d77b4b56f`;
+        this.localWeather = await fetch(url).then(async (resp) => {
+            return await resp.json();
+        });
     }
 
-    displayLocalWeather(){
-        console.log(this.localWeather);
-        document.querySelector(".local-weather__heading").innerHTML = this.localWeather.list[0].name;
-
-    }
-
-     async fetchSearchedData(city) {
-         this.city = city;
-       await fetch("http://api.openweathermap.org/data/2.5/weather?q="+this.city+"&APPID=108066b3aff84a56374aeb9d77b4b56f").then(async(response) => {
-            return await response.json();
-        }).then((data) => {
-            this.searchedWeather = data;
-        })
+    async fetchSearchedData(city) {
+        const baseUrl = "http://api.openweathermap.org/data/2.5/weather";
+        const url = `${baseUrl}?q=${city}&units=metric&cnt=1&lang=nl&APPID=108066b3aff84a56374aeb9d77b4b56f`;
+        return await fetch(url).then(async (resp) => {
+            return await resp.json();
+        });
     }
 }
 

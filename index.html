@@ -5,25 +5,32 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Weather</title>
 </head>
-<body>
+<body class="body">
     <main class="container">
-        <div class="search">
-            <label for="search" class="search_label">Zoek</label>
-            <input type="search" name="search" class="search_input">
-        </div>
+
+        <form method="post" class="search">
+            <input type="search" name="search" class="search__input">
+            <button type="submit" class="search__button">Zoek</button>
+        </form>
         <div class="local-weather">
-            <h2 class="local-weather__heading"></h2>
-            <p class="local-weather__min"></p>
-            <p class="local-weather__max"></p>
+            <div class="local-weather__header"></div>
+            <p class="local-weather__temp"></p>
+            <p class="local-weather__temp--estimated"></p>
         </div>
         <section class="weather">
-
+            <div class="local-weather">
+                <h2 class="weather__heading"></h2>
+                <p class="weather__temp"></p>
+                <p class="weather__temp-min"></p>
+                <p class="weather__temp-max"></p>
+            </div>
         </section>
     </main>
-    <script src="js/Weather.js"></script>
-    <script src="js/main.js"></script>
+<script src="js/Weather.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
