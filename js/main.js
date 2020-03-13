@@ -4,7 +4,6 @@ class Main {
         this.dragover = null;
         this.dragstart = null;
         this.load();
-        this.resume = true;
     }
 
     async load() {
@@ -63,7 +62,7 @@ class Main {
 
         for (const weatherDiv of weatherDivs){
             weatherDiv.addEventListener('drop', this.drop = (ev)=>{
-                event.preventDefault ();
+                ev.preventDefault ();
                 let src = null;
                 for (const weatherDiv of weatherDivs) {
                     if(ev.dataTransfer.getData("src") === weatherDiv.dataset.id){
@@ -75,13 +74,13 @@ class Main {
                 var nodes = Array.prototype.slice.call(tgt.parentNode.parentNode.children);
                 block.insertBefore(src,block.children[nodes.indexOf(tgt.parentNode)]);
                 block.insertBefore(block.children[nodes.indexOf(tgt.parentNode)],src);
-                console.log(src.dataset.id);
-                console.log(src,'src');
-                console.log(block,'block');
-                console.log(tgt.parentNode,'tgt');
-                console.log('-------------------');
-                this.swapPositions(src,tgt)
-
+                // console.log(src.dataset.id);
+                // console.log(src,'src');
+                // console.log(block,'block');
+                // console.log(tgt.parentNode,'tgt');
+                // console.log('-------------------');
+                this.swapPositions();
+                this.displaySearchedWeather();
             });
             weatherDiv.addEventListener('dragover', this.dragover = (ev)=>{
                 ev.preventDefault ();
@@ -92,13 +91,20 @@ class Main {
         }
     }
 
-    swapPositions(src, tgt){
-        for (let i = tgt.dataset.id; i < this.searchedWeatherList.length; i++) {
-            if(i = src.dataset.id){
-                this.searchedWeatherList[tgt.dataset.id]
+    swapPositions(){
+        let newSearchedWeatherList = [];
+        const weatherDivs = document.querySelectorAll('.searched-weather');
+        for (const weatherDiv of weatherDivs) {
+            for (let i = 0; i < this.searchedWeatherList.length; i++) {
+                console.log(weatherDiv,this.searchedWeatherList[i]);
+                if(this.searchedWeatherList[i] == null) continue;
+                if(this.searchedWeatherList[i].id == weatherDiv.dataset.id){
+                    newSearchedWeatherList.push((this.searchedWeatherList[i]));
+                }
             }
         }
-        localStorage.setItem("searchedWeather", JSON.stringify(this.searchedWeatherList))
+        this.searchedWeatherList = newSearchedWeatherList;
+        localStorage.setItem("searchedWeather", JSON.stringify(this.searchedWeatherList));
     }
 
     displayLocalWeather() {
@@ -107,10 +113,7 @@ class Main {
             <h2 class="local-weather__heading">
                 ${localWeather.name} , ${localWeather.sys.country}
             </h2>
-            <img src=\"http://openweathermap.org/img/wn/
-                ${
-                    localWeather.weather[0].icon
-                }@2x.png\" alt=\"\"
+            <img src=\"http://openweathermap.org/img/wn/${localWeather.weather[0].icon}@2x.png\" alt=\"\"
             > 
             <p>
                 ${localWeather.weather[0].description}
@@ -209,4 +212,4 @@ class Main {
     }
 }
 
- new Main();
+new Main();

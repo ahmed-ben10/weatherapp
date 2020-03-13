@@ -10,6 +10,8 @@
   margin-top: 11%;
   width: 60%;
   margin-left: 18%;
+  margin-bottom: 2%;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   padding: 2%;
   background-color: #ffffff6e;
 }
