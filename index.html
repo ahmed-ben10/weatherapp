@@ -15,14 +15,22 @@
             <form method="post" class="search">
                 <input type="search" name="search" class="search__input">
                 <button type="submit" class="search__button"><i class="fa fa-search"></i></button>
+                <span class="search__error"></span>
             </form>
             <div class="local-weather">
                 <div class="local-weather__header"></div>
                 <p class="local-weather__temp"></p>
-                <p class="local-weather__temp--estimated"></p>
+                <div class="local-weather__temp--estimated">
+                    <p class="local-weather__temp--min"></p>
+                    <p class="local-weather__temp--max"></p>
+                </div>
+                <div class="local-weather__details"></div>
             </div>
         </section>
         <section class="weather"></section>
+        <button type="button" class="button-up">
+            <i class="fa fa-arrow-up"></i>
+        </button>
     </main>
     <script src="https://use.fontawesome.com/5ea4205658.js"></script>
     <script src="js/Weather.js"></script>

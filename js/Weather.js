@@ -1,7 +1,6 @@
 class Weather {
 
     constructor() {
-        this.city = null;
         this.searchedWeather = null;
         this.localWeather = null;
     }
