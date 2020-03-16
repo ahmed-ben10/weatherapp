@@ -15,7 +15,7 @@ class Main {
         this.eventHandlers();
     }
 
-    async eventHandlers() {
+     eventHandlers() {
         document.querySelector('.button-up').addEventListener('click', () => {
             window.scrollTo({top: -10000, behavior: 'smooth'});
         });
@@ -44,7 +44,7 @@ class Main {
             }
         });
 
-        const buttons = await document.querySelectorAll('.weather__delete');
+        const buttons = document.querySelectorAll('.weather__delete');
         for (const button of buttons){
             button.addEventListener('click', (e) =>{
                 this.removeWeather(button.dataset.id);
@@ -52,8 +52,8 @@ class Main {
         }
     }
 
-    async dragable(){
-        const weatherDivs = await document.querySelectorAll('.searched-weather');
+     dragable(){
+        const weatherDivs = document.querySelectorAll('.searched-weather');
         for (const weatherDiv of weatherDivs) {
             weatherDiv.removeEventListener('drop', this.drop);
             weatherDiv.removeEventListener('dragover', this.dragover);
@@ -203,7 +203,7 @@ class Main {
     removeWeather(id) {
         for (let i = 0; i < this.searchedWeatherList.length; i++) {
             if (this.searchedWeatherList[i] == null) continue;
-            if (this.searchedWeatherList[i].id == id) {
+            if (this.searchedWeatherList[i].id === parseInt(id)) {
                 this.searchedWeatherList.splice(i, 1);
             }
         }
